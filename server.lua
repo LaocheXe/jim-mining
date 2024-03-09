@@ -28,6 +28,11 @@ RegisterServerEvent("jim-mining:Reward", function(data)
 		TriggerEvent("jim-mining:server:toggleItem", false, "stone", data.cost, src)
 		for i = 1, math.random(1,2) do
 			TriggerEvent("jim-mining:server:toggleItem", true, Config.WashPool[math.random(1, #Config.WashPool)], amount, src)
+			local uncommon = math.random(1, 100)
+			if uncommon < 2 then
+				Player.Functions.AddItem("enchantingstone", 1, false)
+				TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["enchantingstone"], "add")
+			end
 		end
 	elseif data.pan then
 		for i = 1, math.random(1,3) do
@@ -50,12 +55,12 @@ RegisterNetEvent("jim-mining:Selling", function(data)
     end
 end)
 
-local function dupeWarn(src, item)
+--[[local function dupeWarn(src, item)
 	local P = QBCore.Functions.GetPlayer(src)
 	print("^5DupeWarn: ^1"..P.PlayerData.charinfo.firstname.." "..P.PlayerData.charinfo.lastname.."^7(^1"..tostring(src).."^7) ^2Tried to remove item ^7('^3"..item.."^7')^2 but it wasn't there^7")
 	if not Config.Debug then DropPlayer(src, "^1Kicked for attempting to duplicate items") end
 	print("^5DupeWarn: ^1"..P.PlayerData.charinfo.firstname.." "..P.PlayerData.charinfo.lastname.."^7(^1"..tostring(src).."^7) ^2Dropped from server for item duplicating^7")
-end
+end]]
 
 RegisterNetEvent('jim-mining:server:toggleItem', function(give, item, amount, newsrc)
 	local src = newsrc or source
@@ -67,7 +72,8 @@ RegisterNetEvent('jim-mining:server:toggleItem', function(give, item, amount, ne
 			while remamount > 0 do if Player.Functions.RemoveItem(item, 1) then end remamount -= 1 end
 			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount or 1) end
 			if Config.Debug then print("^5Debug^7: ^1Removing ^2from Player^7(^2"..src.."^7) '^6"..QBCore.Shared.Items[item].label.."^7(^2x^6"..(amount or "1").."^7)'") end
-		else dupeWarn(src, item) end -- if not boot the player
+		--else dupeWarn(src, item) 
+		end -- if not boot the player
 	else
 		if Player.Functions.AddItem(item, amount or 1) then
 			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount or 1)

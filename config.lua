@@ -4,7 +4,7 @@ Loc = {}
 
 Config = {
 	Debug = false, -- enable debug mode
-	img = "qb-inventory/html/images/", --Set this to the image directory of your inventory script or "nil" if using newer qb-menu
+	img = "ls-inventory/html/images/", --Set this to the image directory of your inventory script or "nil" if using newer qb-menu
 
 	Lan = "en", -- Pick your language here
 
@@ -46,21 +46,23 @@ Config = {
 		"uncut_emerald",
 		"uncut_diamond",
 		"uncut_sapphire",
+		"topaz",
+		"obsidian",
 		"goldore",
 	},
 
 	PanPool = {		-- Rewards from panning
-		"can",
+		"emptycan",
 		"goldore",
-		"can",
+		"emptycan",
 		"goldore",
 		"bottle",
 		"stone",
 		"goldore",
 		"bottle",
-		"can",
+		"emptycan",
 		"silverore",
-		"can",
+		"emptycan",
 		"silverore",
 		"bottle",
 		"stone",
@@ -139,15 +141,14 @@ Config = {
 	Items = {
 		label = "Mining Store",  slots = 9,
 		items = {
-			{ name = "water_bottle", price = 0, amount = 100, info = {}, type = "item", slot = 1, },
-			{ name = "sandwich", price = 0, amount = 250, info = {}, type = "item", slot = 2, },
-			{ name = "bandage", price = 0, amount = 100, info = {}, type = "item", slot = 3, },
-			{ name = "weapon_flashlight", price = 0, amount = 100, info = {}, type = "item", slot = 4, },
-			{ name = "goldpan", price = 0, amount = 100, info = {}, type = "item", slot = 5, },
-			{ name = "pickaxe",	price = 100, amount = 100, info = {}, type = "item", slot = 6, },
-			{ name = "miningdrill",	price = 10000, amount = 50, info = {}, type = "item", slot = 7, },
-			{ name = "mininglaser",	price = 60000, amount = 5, info = {}, type = "item", slot = 8, },
-			{ name = "drillbit", price = 0, amount = 100, info = {}, type = "item", slot = 9, },
+			{ name = "water_bottle", price = 7, amount = 10, info = {}, type = "item", slot = 1, },
+			{ name = "sandwich", price = 8, amount = 15, info = {}, type = "item", slot = 2, },
+			{ name = "bandage", price = 18, amount = 50, info = {}, type = "item", slot = 3, },
+			{ name = "goldpan", price = 75, amount = 5, info = {}, type = "item", slot = 4, },
+			{ name = "pickaxe",	price = 100, amount = 5, info = {}, type = "item", slot = 5, },
+			{ name = "miningdrill",	price = 10000, amount = 2, info = {}, type = "item", slot = 6, },
+			{ name = "mininglaser",	price = 60000, amount = 2, info = {}, type = "item", slot = 7, },
+			{ name = "drillbit", price = 50, amount = 50, info = {}, type = "item", slot = 8, },
 		},
 	},
 }
@@ -162,7 +163,7 @@ Crafting = {
 		{ ["silveringot"] = { ["silver_ring"] = 4 } },
 		{ ["iron"] = { ["ironore"] = 1 } },
 		{ ["steel"] = { ["ironore"] = 1, ["carbon"] = 1 } },
-		{ ["aluminum"] = { ["can"] = 2, }, ['amount'] = 3 },
+		{ ["aluminum"] = { ["emptycan"] = 2, }, ['amount'] = 3 },
 		{ ["glass"] = { ["bottle"] = 2, }, ['amount'] = 2 },
 	},
 	GemCut = {
